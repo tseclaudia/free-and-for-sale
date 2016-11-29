@@ -4,17 +4,9 @@ class SalePostsController < ApplicationController
     @all_sale_posts = SalePost.where(sold: false)
     @all_sale_posts = @all_sale_posts.sort_by { |f| f.updated_at }.reverse!
   end
-
-  def show
-  end
   
   def new
     @sale_post = SalePost.new
-  end
-
-  def show
-    @sale_post = SalePost.find(params[:id])
-    @message = @sale_post.message
   end
 
   def create

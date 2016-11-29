@@ -6,12 +6,11 @@ class MessagesController < ApplicationController
 		@messages = Message.all.order("created_at DESC")
 	end
 
-	def show
-	end
 
 	def new
-		@post = SalePost.find_by_id(params[:id])
-		if @post.nil?
+		if SalePost.find_by_id(params[:id])
+			@post = SalePost.find_by_id(params[:id])
+		else
 			@post = BuyPost.find_by_id(params[:id])
 		end
 		if @post.message
